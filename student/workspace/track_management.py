@@ -8,8 +8,11 @@ from __future__ import annotations
 
 from typing import Any
 
-# vi: from fusion_lab.workspace_support import get_tracking_params
-# vi: import numpy as np
+import numpy as np
+
+from fusion_lab.workspace_support import get_tracking_params
+
+params = get_tracking_params()
 
 
 def init_track_state_from_meas(meas: Any) -> dict[str, Any]:
@@ -21,9 +24,22 @@ def init_track_state_from_meas(meas: Any) -> dict[str, Any]:
     Returns:
         Dict with keys ``x``, ``P``, ``state``, ``score`` (matrices as ``np.matrix``).
     """
-    # vi: TODO Part H — đổi meas.z sang vehicle frame; x = [pos; 0 velocity];
-    # vi: P block pos từ R xoay, vel từ sigma_p44/55/66; score = 1/window; state initialized.
-    raise NotImplementedError("TODO: implement init_track_state_from_meas")
+    M = np.asarray(meas.sensor.sens_to_veh, dtype=float)
+    rotation, translation = M[:3, :3], M[:3, 3]
+    z = np.asarray(meas.z, dtype=float).reshape(3)
+    position = rotation @ z + translation  # sensor frame -> vehicle frame
+    x = np.asmatrix(np.r_[position, [0.0, 0.0, 0.0]]).T  # velocity unknown -> 0
+    P = np.zeros((params.dim_state, params.dim_state))
+    # Position covariance: R rotated into the vehicle frame (R_veh = M3 R M3').
+    P[:3, :3] = rotation @ np.asarray(meas.R, dtype=float) @ rotation.T
+    # Velocity is not observed by one measurement: broad prior.
+    P[3:, 3:] = np.diag([params.sigma_p44**2, params.sigma_p55**2, params.sigma_p66**2])
+    return {
+        "x": x,
+        "P": np.asmatrix(P),
+        "state": "initialized",
+        "score": 1.0 / params.window,
+    }
 
 
 def update_track_score(track: dict[str, Any], associated: bool) -> dict[str, Any]:
@@ -39,10 +55,18 @@ def update_track_score(track: dict[str, Any], associated: bool) -> dict[str, Any
     Returns:
         Updated track dict.
     """
-    # vi: TODO Part H — chỉ lidar: hit +1/window (tối đa 1), miss trong FOV -1/window.
-    # vi: score > confirmed_threshold → confirmed; đã confirmed không hạ trạng thái.
-    # vi: Camera không gọi hàm này; track chưa confirmed với hit → tentative.
-    raise NotImplementedError("TODO: implement update_track_score")
+    step = 1.0 / params.window
+    if associated:
+        track["score"] = min(1.0, track["score"] + step)
+    else:
+        track["score"] = track["score"] - step
+    if track["state"] == "confirmed":
+        pass  # confirmed is never demoted; only deletion removes it
+    elif track["score"] > params.confirmed_threshold:
+        track["state"] = "confirmed"
+    elif associated:
+        track["state"] = "tentative"
+    return track
 
 
 def should_delete_track(track: dict[str, Any]) -> bool:
@@ -58,7 +82,10 @@ def should_delete_track(track: dict[str, Any]) -> bool:
     Returns:
         True if track should be removed.
     """
-    # vi: TODO Part H — Pxx hoặc Pyy > max_P: xóa bất kể score.
-    # vi: confirmed: xóa khi score < delete_threshold; chưa confirmed: score <= 0.
-    # vi: Các điều kiện là OR; camera không đánh giá/xóa track.
-    raise NotImplementedError("TODO: implement should_delete_track")
+    P = track["P"]
+    too_uncertain = P[0, 0] > params.max_P or P[1, 1] > params.max_P
+    if track["state"] == "confirmed":
+        lost = track["score"] < params.delete_threshold
+    else:
+        lost = track["score"] <= 0
+    return bool(too_uncertain or lost)
