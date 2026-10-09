@@ -1,0 +1,144 @@
+{
+  "segment": "training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord",
+  "frames": [
+    0,
+    198
+  ],
+  "seed": 0,
+  "rows": [
+    {
+      "yaw_deg": 0.0,
+      "tracking": {
+        "rmse": 0.1358667883353908,
+        "matches": 502,
+        "sum_sq_err": 9.26681165463209,
+        "ghost_track_frames": 0,
+        "missed_gt_frames": 239,
+        "mean_confirmed_tracks": 2.522613065326633
+      },
+      "camera": {
+        "camera_measurements": 2799,
+        "camera_updates": 509,
+        "not_used_by_gate_or_fov": 2290,
+        "mean_abs_innovation_px_i": 12.902930751146732,
+        "mean_abs_innovation_px_j": 9.51531924084977,
+        "mean_signed_innovation_px_i": -11.887053120674791,
+        "mean_d2": 2.2488867894515776,
+        "chi2_gate_d2": 10.596634733096073
+      }
+    },
+    {
+      "yaw_deg": 0.1,
+      "tracking": {
+        "rmse": 0.14582039970093547,
+        "matches": 502,
+        "sum_sq_err": 10.674321662408174,
+        "ghost_track_frames": 0,
+        "missed_gt_frames": 239,
+        "mean_confirmed_tracks": 2.522613065326633
+      },
+      "camera": {
+        "camera_measurements": 2799,
+        "camera_updates": 506,
+        "not_used_by_gate_or_fov": 2293,
+        "mean_abs_innovation_px_i": 16.379845147249323,
+        "mean_abs_innovation_px_j": 9.482412458261825,
+        "mean_signed_innovation_px_i": -15.578495830744291,
+        "mean_d2": 3.0889589749554496,
+        "chi2_gate_d2": 10.596634733096073
+      }
+    },
+    {
+      "yaw_deg": 0.25,
+      "tracking": {
+        "rmse": 0.17548383559553302,
+        "matches": 502,
+        "sum_sq_err": 15.458877430770672,
+        "ghost_track_frames": 0,
+        "missed_gt_frames": 239,
+        "mean_confirmed_tracks": 2.522613065326633
+      },
+      "camera": {
+        "camera_measurements": 2799,
+        "camera_updates": 484,
+        "not_used_by_gate_or_fov": 2315,
+        "mean_abs_innovation_px_i": 21.358041110211047,
+        "mean_abs_innovation_px_j": 9.342651087329587,
+        "mean_signed_innovation_px_i": -20.485232550488824,
+        "mean_d2": 4.712861005404116,
+        "chi2_gate_d2": 10.596634733096073
+      }
+    },
+    {
+      "yaw_deg": 0.5,
+      "tracking": {
+        "rmse": 0.212893722491121,
+        "matches": 502,
+        "sum_sq_err": 22.752516012215473,
+        "ghost_track_frames": 0,
+        "missed_gt_frames": 239,
+        "mean_confirmed_tracks": 2.522613065326633
+      },
+      "camera": {
+        "camera_measurements": 2799,
+        "camera_updates": 304,
+        "not_used_by_gate_or_fov": 2495,
+        "mean_abs_innovation_px_i": 28.46117445747089,
+        "mean_abs_innovation_px_j": 7.827381167527984,
+        "mean_signed_innovation_px_i": -27.61373488490979,
+        "mean_d2": 7.644688404107382,
+        "chi2_gate_d2": 10.596634733096073
+      }
+    },
+    {
+      "yaw_deg": 1.0,
+      "tracking": {
+        "rmse": 0.17380845823576008,
+        "matches": 502,
+        "sum_sq_err": 15.165108837454563,
+        "ghost_track_frames": 0,
+        "missed_gt_frames": 239,
+        "mean_confirmed_tracks": 2.522613065326633
+      },
+      "camera": {
+        "camera_measurements": 2799,
+        "camera_updates": 20,
+        "not_used_by_gate_or_fov": 2779,
+        "mean_abs_innovation_px_i": 84.01772235597106,
+        "mean_abs_innovation_px_j": 36.52668692593777,
+        "mean_signed_innovation_px_i": -73.54356272119296,
+        "mean_d2": 3.427004083605754,
+        "chi2_gate_d2": 10.596634733096073
+      }
+    },
+    {
+      "yaw_deg": 2.0,
+      "tracking": {
+        "rmse": 0.17795792520747292,
+        "matches": 502,
+        "sum_sq_err": 15.89784961836256,
+        "ghost_track_frames": 0,
+        "missed_gt_frames": 239,
+        "mean_confirmed_tracks": 2.522613065326633
+      },
+      "camera": {
+        "camera_measurements": 2799,
+        "camera_updates": 19,
+        "not_used_by_gate_or_fov": 2780,
+        "mean_abs_innovation_px_i": 88.33285751610678,
+        "mean_abs_innovation_px_j": 45.41638881715351,
+        "mean_signed_innovation_px_i": -80.59608582508243,
+        "mean_d2": 3.8503909357964874,
+        "chi2_gate_d2": 10.596634733096073
+      }
+    }
+  ],
+  "lidar_only": {
+    "rmse": 0.15032268781360134,
+    "matches": 502,
+    "sum_sq_err": 11.343649056695735,
+    "ghost_track_frames": 0,
+    "missed_gt_frames": 239,
+    "mean_confirmed_tracks": 2.522613065326633
+  }
+}
