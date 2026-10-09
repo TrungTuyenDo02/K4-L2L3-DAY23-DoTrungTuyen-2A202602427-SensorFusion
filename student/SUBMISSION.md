@@ -8,7 +8,7 @@
 - MSSV: 2A202602427
 - Email: trungdo2002.hvt@gmail.com
 - Link repo (fork): https://github.com/TrungTuyenDo02/K4-L2L3-DAY23-DoTrungTuyen-2A202602427-SensorFusion
-- Commit hash nộp (`git rev-parse HEAD`): <điền sau commit cuối>
+- Commit hash nộp (`git rev-parse HEAD`): 18c9b7e024315d8d15612a4fa24a6aa811feacca (CP5, commit chứa mã nguồn, artifacts và báo cáo; commit sau đó chỉ ghi hash này)
 
 ## Tóm tắt kết quả
 
@@ -109,8 +109,8 @@ Ghi rõ, kể cả khi không dùng ("Không dùng AI"). Xem [RULES.md](../RULES
 - [x] **Part E–H** trong `workspace/` đã implement; `pytest student/tests -q` không còn `failed`/`xfailed`
 - [x] Part A–D: không bắt buộc sửa (hoặc ghi chú nếu bạn đã sửa)
 - [x] Lần chạy chấm điểm: `--fusion compare --seed 0`, `frame_start: 0`, `frame_end: 198`
-- [ ] Đã commit `student/artifacts/metrics*.json` và `student/artifacts/grade_run*.log` (không sửa tay)
-- [ ] Đã điền đủ file này, gồm khai báo AI
+- [x] Đã commit `student/artifacts/metrics*.json` và `student/artifacts/grade_run*.log` (không sửa tay)
+- [x] Đã điền đủ file này, gồm khai báo AI
 - [x] Không commit dữ liệu Waymo, weights, `paths.yaml`, API key
-- [ ] `python tools/check_submission.py` báo `KẾT QUẢ: SẴN SÀNG NỘP`
+- [x] `python tools/check_submission.py` báo `KẾT QUẢ: SẴN SÀNG NỘP`
 - [ ] Đã push và nộp link repo + commit hash trên LMS ([hướng dẫn nộp](../SUBMISSION.md))
